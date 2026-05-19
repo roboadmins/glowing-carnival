@@ -290,7 +290,29 @@ p  { margin: 0 0 1em; }
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 56px;
+  margin-bottom: 28px;
+}
+.hero-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 36px;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,.72);
+  font-weight: 400;
+}
+.hero-credit-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  box-shadow: 0 0 0 4px rgba(201,169,97,.18);
+  flex-shrink: 0;
+  animation: heroDotPulse 2.4s ease-in-out infinite;
+}
+@keyframes heroDotPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(201,169,97,.18); }
+  50%      { box-shadow: 0 0 0 7px rgba(201,169,97,.10); }
 }
 .trust-row {
   list-style: none;
@@ -365,7 +387,9 @@ p  { margin: 0 0 1em; }
   background: rgba(255,255,255,.08);
   color: var(--gold-500);
 }
-.card-feature .card-list li::before { background: var(--gold-500); }
+.card-feature .card-list li::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c9a961'><ellipse cx='7' cy='9' rx='2' ry='2.6'/><ellipse cx='12' cy='6' rx='2' ry='2.6'/><ellipse cx='17' cy='9' rx='2' ry='2.6'/><ellipse cx='3.5' cy='14' rx='1.7' ry='2.2'/><ellipse cx='20.5' cy='14' rx='1.7' ry='2.2'/><path d='M6 18.5c0-3 2.7-5 6-5s6 2 6 5-2.7 3.8-6 3.8-6-.8-6-3.8z'/></svg>");
+}
 .card-icon {
   width: 56px; height: 56px;
   border-radius: 16px;
@@ -381,16 +405,18 @@ p  { margin: 0 0 1em; }
 }
 .card-list li {
   position: relative;
-  padding-left: 22px;
+  padding-left: 26px;
   margin-bottom: 10px;
   font-size: 0.95rem;
 }
 .card-list li::before {
   content: "";
   position: absolute;
-  left: 0; top: 10px;
-  width: 10px; height: 2px;
-  background: var(--gold-500);
+  left: 0; top: 4px;
+  width: 16px; height: 16px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b29148'><ellipse cx='7' cy='9' rx='2' ry='2.6'/><ellipse cx='12' cy='6' rx='2' ry='2.6'/><ellipse cx='17' cy='9' rx='2' ry='2.6'/><ellipse cx='3.5' cy='14' rx='1.7' ry='2.2'/><ellipse cx='20.5' cy='14' rx='1.7' ry='2.2'/><path d='M6 18.5c0-3 2.7-5 6-5s6 2 6 5-2.7 3.8-6 3.8-6-.8-6-3.8z'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .badge {
   position: absolute;
@@ -464,6 +490,30 @@ p  { margin: 0 0 1em; }
 }
 .about-copy h2 { margin-bottom: 20px; }
 .about-copy p { color: var(--ink-700); }
+.signature-block {
+  display: flex;
+  flex-direction: column;
+  margin: 28px 0 0;
+  line-height: 1;
+}
+.signature {
+  font-family: "Homemade Apple", "Brush Script MT", cursive;
+  font-size: 2.6rem;
+  color: var(--navy-800);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+  margin-bottom: 6px;
+}
+.signature-sub {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+}
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
