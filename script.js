@@ -46,7 +46,7 @@ if ('IntersectionObserver' in window) {
   revealTargets.forEach(el => el.classList.add('in-view'));
 }
 
-// Contact form — submits to Formspree when configured, falls back to mailto otherwise
+// Contact form — silent background submit to Formspree
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 const submitBtn = form.querySelector('button[type="submit"]');
@@ -76,27 +76,6 @@ function validate() {
   return true;
 }
 
-function mailtoFallback() {
-  const subject = encodeURIComponent(
-    `Ride request — ${form.elements.service.value} (${form.elements.from.value} → ${form.elements.to.value})`
-  );
-  const lines = [
-    `Name: ${form.elements.name.value}`,
-    `Email: ${form.elements.email.value.trim()}`,
-    `Phone: ${form.elements.phone.value || '—'}`,
-    `Pickup: ${form.elements.from.value}`,
-    `Drop-off: ${form.elements.to.value}`,
-    `Service: ${form.elements.service.value}`,
-    `Date: ${form.elements.when.value || '—'}`,
-    '',
-    'Pet details:',
-    form.elements.details.value || '—'
-  ];
-  const body = encodeURIComponent(lines.join('\n'));
-  setNote(`Opening your email app to send your request to ${RECIPIENT_EMAIL}…`);
-  window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
-}
-
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   note.hidden = true;
@@ -104,14 +83,18 @@ form.addEventListener('submit', async (e) => {
 
   if (!validate()) return;
 
-  // If the Formspree endpoint hasn't been configured, use mailto.
   const endpoint = form.getAttribute('action') || '';
+
+  // Guard against an unconfigured endpoint — show a clean message rather than
+  // sending the request to the literal placeholder URL.
   if (!endpoint || endpoint.includes('YOUR_FORM_ID')) {
-    mailtoFallback();
+    setNote(
+      `The form isn't fully set up yet. Please email ${RECIPIENT_EMAIL} directly.`,
+      true
+    );
     return;
   }
 
-  // Submit to Formspree (or any compatible endpoint) via fetch.
   const originalBtnText = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending…';
@@ -125,7 +108,7 @@ form.addEventListener('submit', async (e) => {
 
     if (response.ok) {
       form.reset();
-      setNote(`Thank you — your request has been sent to ${RECIPIENT_EMAIL}. We'll be in touch within one business day.`);
+      setNote(`Thank you — your request has been sent. We'll be in touch within one business day.`);
     } else {
       const data = await response.json().catch(() => ({}));
       const msg = data?.errors?.[0]?.message
