@@ -83,37 +83,26 @@ form.addEventListener('submit', async (e) => {
 
   if (!validate()) return;
 
-  const endpoint = form.getAttribute('action') || '';
-
-  // Guard against an unconfigured endpoint — show a clean message rather than
-  // sending the request to the literal placeholder URL.
-  if (!endpoint || endpoint.includes('YOUR_FORM_ID')) {
-    setNote(
-      `The form isn't fully set up yet. Please email ${RECIPIENT_EMAIL} directly.`,
-      true
-    );
-    return;
-  }
-
   const originalBtnText = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending…';
 
+  // Netlify Forms: POST form data url-encoded to the current page;
+  // Netlify intercepts it and forwards to the configured email.
+  const body = new URLSearchParams(new FormData(form)).toString();
+
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch('/', {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body
     });
 
     if (response.ok) {
       form.reset();
       setNote(`Thank you — your request has been sent. We'll be in touch within one business day.`);
     } else {
-      const data = await response.json().catch(() => ({}));
-      const msg = data?.errors?.[0]?.message
-        || `Something went wrong. Please email ${RECIPIENT_EMAIL} directly.`;
-      setNote(msg, true);
+      setNote(`Something went wrong. Please email ${RECIPIENT_EMAIL} directly.`, true);
     }
   } catch (err) {
     setNote(`Network error. Please email ${RECIPIENT_EMAIL} directly.`, true);
