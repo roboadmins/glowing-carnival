@@ -334,12 +334,11 @@
           </ul>
         </div>
 
-        <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="_subject" value="New ride request from kanespettransport.com" />
-          <p style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true">
-            <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-          </p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="New ride request from kanespettransport.com" />
+          <input type="hidden" name="from_name" value="Kane's Pet Transport — Website" />
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" />
           <div class="field">
             <label for="name">Your name</label>
             <input id="name" name="name" type="text" autocomplete="name" required />

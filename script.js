@@ -83,26 +83,41 @@ form.addEventListener('submit', async (e) => {
 
   if (!validate()) return;
 
+  // Web3Forms requires a valid access key in the access_key field.
+  const accessKey = form.elements.access_key?.value?.trim();
+  if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+    setNote(
+      `The form isn't fully set up yet. Please email ${RECIPIENT_EMAIL} directly.`,
+      true
+    );
+    return;
+  }
+
   const originalBtnText = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending…';
 
-  // Netlify Forms: POST form data url-encoded to the current page;
-  // Netlify intercepts it and forwards to the configured email.
-  const body = new URLSearchParams(new FormData(form)).toString();
+  // Web3Forms accepts JSON-encoded form fields and returns { success, message }.
+  const payload = Object.fromEntries(new FormData(form));
 
   try {
-    const response = await fetch('/', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
     });
 
-    if (response.ok) {
+    const result = await response.json().catch(() => ({}));
+
+    if (response.ok && result.success) {
       form.reset();
       setNote(`Thank you — your request has been sent. We'll be in touch within one business day.`);
     } else {
-      setNote(`Something went wrong. Please email ${RECIPIENT_EMAIL} directly.`, true);
+      const msg = result.message || `Something went wrong. Please email ${RECIPIENT_EMAIL} directly.`;
+      setNote(msg, true);
     }
   } catch (err) {
     setNote(`Network error. Please email ${RECIPIENT_EMAIL} directly.`, true);
