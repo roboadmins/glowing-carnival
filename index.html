@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kane's Pet Transport — premium, personalized pet transportation. VIP solo rides, family pet transport, and specialized care for anxious or reactive pets." />
+  <meta name="theme-color" content="#0F2A44" />
+  <title>Kane's Pet Transport — Premium Pet Transportation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Kane's Pet Transport home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="13" r="2.2"/>
+            <circle cx="21" cy="13" r="2.2"/>
+            <circle cx="7" cy="19" r="1.8"/>
+            <circle cx="25" cy="19" r="1.8"/>
+            <path d="M11 22.5c0-3 2.2-5 5-5s5 2 5 5-2.2 3.5-5 3.5-5-.5-5-3.5z"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Kane's</span>
+          <span class="brand-sub">Pet Transport</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#approach">Our Approach</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Request a Ride</a>
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="#services">Services</a>
+      <a href="#approach">Our Approach</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Request a Ride</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1800&q=80" alt="" loading="eager" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-content">
+        <p class="eyebrow">Concierge pet transportation</p>
+        <h1>Calm, careful travel for the animals you love most.</h1>
+        <p class="hero-lede">
+          A door-to-door pet transport service built around one idea: every ride should feel like home.
+          Private vehicles, hand-on-the-wheel attention, and a temperament-first approach for pets that
+          need a little extra care.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Plan a Trip</a>
+          <a href="#services" class="btn btn-ghost">See Services</a>
+        </div>
+
+        <ul class="trust-row" aria-label="Service highlights">
+          <li><strong>Single-client</strong> private rides</li>
+          <li><strong>Local &amp; long-distance</strong> routes</li>
+          <li><strong>Anxious &amp; reactive pets</strong> welcome</li>
+        </ul>
+      </div>
+
+      <a class="scroll-cue" href="#services" aria-label="Scroll to services">
+        <span></span>
+      </a>
+    </section>
+
+    <section class="section section-services" id="services">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Services</p>
+          <h2>Transport that fits the temperament of your pet.</h2>
+          <p class="section-lede">
+            Three ways we travel. Every option is private — your pet shares the vehicle only with their
+            own family and their driver. No shared crates, no shared cabins, no detours.
+          </p>
+        </header>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 30h32M12 30v-7l4-8h16l4 8v7M16 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <circle cx="24" cy="20" r="2"/>
+              </svg>
+            </div>
+            <h3>VIP Solo Ride</h3>
+            <p>
+              One pet. One driver. One destination. Ideal for travelers who want undivided attention,
+              flexible stops, and a route designed around their animal's comfort.
+            </p>
+            <ul class="card-list">
+              <li>Private vehicle, just your pet</li>
+              <li>Hourly comfort checks &amp; photo updates</li>
+              <li>Climate-controlled cabin throughout</li>
+            </ul>
+          </article>
+
+          <article class="card card-feature">
+            <span class="badge">Most Requested</span>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="18" r="5"/>
+                <circle cx="32" cy="18" r="5"/>
+                <path d="M8 36c0-5 4-8 8-8s8 3 8 8M24 36c0-5 4-8 8-8s8 3 8 8"/>
+              </svg>
+            </div>
+            <h3>Same-Family Ride</h3>
+            <p>
+              Multiple pets from the same household traveling together. Familiar smells, familiar faces,
+              less stress. Perfect for moves, vet visits, and reunions.
+            </p>
+            <ul class="card-list">
+              <li>Up to four same-household pets</li>
+              <li>Custom crating or harnessed seating</li>
+              <li>Coordinated pickup &amp; drop-off windows</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 8v6M14 12l4 4M34 12l-4 4M10 22h6M32 22h6"/>
+                <path d="M16 32c0-6 4-10 8-10s8 4 8 10-4 8-8 8-8-2-8-8z"/>
+                <circle cx="20" cy="30" r="1.2"/>
+                <circle cx="28" cy="30" r="1.2"/>
+              </svg>
+            </div>
+            <h3>Behavior-Aware Ride</h3>
+            <p>
+              For pets that need a softer hand — anxiety, reactivity, motion sickness, or a history of
+              difficult transport. We plan the ride around your pet, not the other way around.
+            </p>
+            <ul class="card-list">
+              <li>Pre-ride consultation &amp; behavior brief</li>
+              <li>Desensitization &amp; positive reinforcement</li>
+              <li>Quiet routes, slow loading, real breaks</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-approach" id="approach">
+      <div class="container approach-grid">
+        <div class="approach-copy">
+          <p class="eyebrow">Our Approach</p>
+          <h2>A quieter way to move your pet.</h2>
+          <p>
+            Most pet transport is built for efficiency. Ours is built for the animal in the back seat.
+            That means smaller routes, slower loading, real breaks, and a driver who knows the
+            difference between a pant and a panic.
+          </p>
+          <p>
+            We treat behavior as information, not inconvenience. If your dog hates the crate, we ask why
+            before we ask you to use one. If your cat freezes at thresholds, we plan two extra minutes
+            at the door. The work is in the details — and the details are why pets settle in with us.
+          </p>
+          <a href="#contact" class="btn btn-dark">Talk to Us</a>
+        </div>
+
+        <ul class="pillars">
+          <li>
+            <h4>01 — Listen first</h4>
+            <p>Every booking begins with a real conversation about your pet's history, triggers, and routines.</p>
+          </li>
+          <li>
+            <h4>02 — Plan the ride</h4>
+            <p>Routes are mapped for low stimulation: quiet roads, predictable stops, and the right kind of breaks.</p>
+          </li>
+          <li>
+            <h4>03 — Stay in touch</h4>
+            <p>You receive check-ins along the way — short messages and photos that tell you exactly how things are going.</p>
+          </li>
+          <li>
+            <h4>04 — Hand off well</h4>
+            <p>We don't just drop off. We make sure your pet has settled, water is down, and your questions are answered.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-about" id="about">
+      <div class="container about-grid">
+        <div class="about-media">
+          <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80" alt="A calm dog resting in a sunny back seat" loading="lazy" />
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">About Kane's</p>
+          <h2>Built by someone who has driven the long way home with a scared dog.</h2>
+          <p>
+            Kane's Pet Transport began as the kind of favor everyone asks of the dog person in their life
+            — long drives for friends' rescues, vet runs for neighbors, the occasional rehoming across
+            state lines. Word spread. The favors became routes. The routes became a service.
+          </p>
+          <p>
+            Today we move pets across the region and across the country, but the standard hasn't moved
+            an inch: clean vehicle, patient driver, no shortcuts, and a phone that picks up when you call.
+          </p>
+          <dl class="stats">
+            <div><dt>Pets transported</dt><dd>2,400+</dd></div>
+            <div><dt>States served</dt><dd>14</dd></div>
+            <div><dt>On-time rate</dt><dd>99.4%</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-testimonials" aria-label="Client testimonials">
+      <div class="container">
+        <header class="section-head section-head-center">
+          <p class="eyebrow">From Our Clients</p>
+          <h2>Words from the people we drive for.</h2>
+        </header>
+
+        <div class="quotes">
+          <figure class="quote">
+            <blockquote>
+              "Our golden was rescued from a hoarding case and is terrified of vehicles. Kane's took
+              ninety minutes just to load her, on the clock, without a word of complaint. She slept the
+              whole ride. We will never use anyone else."
+            </blockquote>
+            <figcaption>— Maren H., Asheville, NC</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>
+              "Two cats, one nervous senior dog, and a 900-mile move. We got photos at every stop and
+              the dog walked into the new house like he'd lived there for years. Worth every penny."
+            </blockquote>
+            <figcaption>— Jonah R., relocating client</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>
+              "I'm a vet tech and I refer all my long-haul cases here. They communicate like
+              professionals, they handle pets like trainers, and they show up on time."
+            </blockquote>
+            <figcaption>— Dr. Lila P., DVM partner</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-faq" id="faq">
+      <div class="container faq-grid">
+        <div>
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions, answered.</h2>
+          <p class="section-lede">
+            If you don't see your question here, reach out — we answer every inquiry within one business day.
+          </p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>What's the service area?</summary>
+            <p>We handle local routes throughout the region and long-distance transport across the continental U.S. Quotes are tailored to the trip.</p>
+          </details>
+          <details>
+            <summary>How are pets restrained during the ride?</summary>
+            <p>We use airline-style crates for dogs and cats by default, and offer harness-and-seatbelt setups for dogs who travel better tethered. Restraint choices are decided together during booking.</p>
+          </details>
+          <details>
+            <summary>Do you transport pets with medical needs?</summary>
+            <p>Yes. We coordinate with your veterinarian, carry medications on schedule, and can break up trips for senior pets, post-op pets, or pets on IV fluids when needed.</p>
+          </details>
+          <details>
+            <summary>Are you insured?</summary>
+            <p>Fully insured commercial pet transporter. Documentation is provided on request and shared in advance of any booking.</p>
+          </details>
+          <details>
+            <summary>How do you handle anxious or reactive pets?</summary>
+            <p>We schedule a pre-ride consultation, build a behavior plan with you, and price in the extra time it takes to do the job right. We don't sedate without veterinary direction.</p>
+          </details>
+          <details>
+            <summary>What does it cost?</summary>
+            <p>Pricing is based on distance, number of pets, behavioral needs, and timing. Most requests get an itemized quote within 24 hours.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Request a Ride</p>
+          <h2>Tell us about your pet.</h2>
+          <p>
+            Share a few details and we'll come back with a quote and a plan. The more we know about
+            your pet — their habits, their history, the things that make them anxious — the better the
+            ride we can build.
+          </p>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-label">Email</span>
+              <a href="mailto:info@kanespettransport.com">info@kanespettransport.com</a>
+            </li>
+            <li>
+              <span class="contact-label">Response time</span>
+              <span>Within one business day</span>
+            </li>
+            <li>
+              <span class="contact-label">Hours</span>
+              <span>Mon–Sat, 8am–7pm</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="from">Pickup city / ZIP</label>
+              <input id="from" name="from" type="text" required />
+            </div>
+            <div class="field">
+              <label for="to">Drop-off city / ZIP</label>
+              <input id="to" name="to" type="text" required />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select…</option>
+                <option>VIP Solo Ride</option>
+                <option>Same-Family Ride</option>
+                <option>Behavior-Aware Ride</option>
+                <option>Not sure — please advise</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="when">Approximate date</label>
+              <input id="when" name="when" type="date" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="details">Tell us about your pet</label>
+            <textarea id="details" name="details" rows="5" placeholder="Breed, age, temperament, anything that helps us plan the ride…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Request</button>
+          <p class="form-note" id="formNote" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand-footer">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="13" r="2.2"/>
+              <circle cx="21" cy="13" r="2.2"/>
+              <circle cx="7" cy="19" r="1.8"/>
+              <circle cx="25" cy="19" r="1.8"/>
+              <path d="M11 22.5c0-3 2.2-5 5-5s5 2 5 5-2.2 3.5-5 3.5-5-.5-5-3.5z"/>
+            </svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">Kane's</span>
+            <span class="brand-sub">Pet Transport</span>
+          </span>
+        </div>
+        <p class="footer-tag">Concierge pet transportation, built around the temperament of your pet.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@kanespettransport.com">info@kanespettransport.com</a></li>
+          <li>Mon–Sat · 8am–7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Kane's Pet Transport. All rights reserved.</span>
+      <span class="footer-meta">Licensed &amp; fully insured commercial pet transporter.</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
