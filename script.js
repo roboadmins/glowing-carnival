@@ -46,36 +46,43 @@ if ('IntersectionObserver' in window) {
   revealTargets.forEach(el => el.classList.add('in-view'));
 }
 
-// Contact form — client-side stub (no backend wired)
+// Contact form — submits to Formspree when configured, falls back to mailto otherwise
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
+const submitBtn = form.querySelector('button[type="submit"]');
+const RECIPIENT_EMAIL = 'info@kanespettransport.com';
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  note.hidden = true;
-  note.classList.remove('error');
+function setNote(msg, isError = false) {
+  note.textContent = msg;
+  note.classList.toggle('error', isError);
+  note.hidden = false;
+}
 
+function validate() {
   const required = ['name', 'email', 'from', 'to', 'service'];
   const missing = required.filter(id => !form.elements[id].value.trim());
   const email = form.elements.email.value.trim();
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   if (missing.length || !emailOk) {
-    note.textContent = !emailOk && !missing.includes('email')
-      ? 'Please enter a valid email address.'
-      : 'Please fill in the required fields.';
-    note.classList.add('error');
-    note.hidden = false;
-    return;
+    setNote(
+      !emailOk && !missing.includes('email')
+        ? 'Please enter a valid email address.'
+        : 'Please fill in the required fields.',
+      true
+    );
+    return false;
   }
+  return true;
+}
 
-  // Compose a mailto fallback so the form is usable without a backend
+function mailtoFallback() {
   const subject = encodeURIComponent(
     `Ride request — ${form.elements.service.value} (${form.elements.from.value} → ${form.elements.to.value})`
   );
   const lines = [
     `Name: ${form.elements.name.value}`,
-    `Email: ${email}`,
+    `Email: ${form.elements.email.value.trim()}`,
     `Phone: ${form.elements.phone.value || '—'}`,
     `Pickup: ${form.elements.from.value}`,
     `Drop-off: ${form.elements.to.value}`,
@@ -86,8 +93,49 @@ form.addEventListener('submit', (e) => {
     form.elements.details.value || '—'
   ];
   const body = encodeURIComponent(lines.join('\n'));
+  setNote(`Opening your email app to send your request to ${RECIPIENT_EMAIL}…`);
+  window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
+}
 
-  note.textContent = 'Opening your email app to send your request to info@kanespettransport.com…';
-  note.hidden = false;
-  window.location.href = `mailto:info@kanespettransport.com?subject=${subject}&body=${body}`;
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  note.hidden = true;
+  note.classList.remove('error');
+
+  if (!validate()) return;
+
+  // If the Formspree endpoint hasn't been configured, use mailto.
+  const endpoint = form.getAttribute('action') || '';
+  if (!endpoint || endpoint.includes('YOUR_FORM_ID')) {
+    mailtoFallback();
+    return;
+  }
+
+  // Submit to Formspree (or any compatible endpoint) via fetch.
+  const originalBtnText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.reset();
+      setNote(`Thank you — your request has been sent to ${RECIPIENT_EMAIL}. We'll be in touch within one business day.`);
+    } else {
+      const data = await response.json().catch(() => ({}));
+      const msg = data?.errors?.[0]?.message
+        || `Something went wrong. Please email ${RECIPIENT_EMAIL} directly.`;
+      setNote(msg, true);
+    }
+  } catch (err) {
+    setNote(`Network error. Please email ${RECIPIENT_EMAIL} directly.`, true);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
+  }
 });
